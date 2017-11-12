@@ -1,60 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mandelbrot.c                                    :+:      :+:    :+:   */
+/*   ft_newton.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lcharvol <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/03 21:07:10 by lcharvol          #+#    #+#             */
-/*   Updated: 2017/06/18 14:36:18 by lcharvol         ###   ########.fr       */
+/*   Created: 2017/03/04 00:26:47 by lcharvol          #+#    #+#             */
+/*   Updated: 2017/03/04 00:26:49 by lcharvol         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void		ft_mandelbrot_(t_env *p, int x, int y)
+void	calculate(t_env *p, double x0, double y0)
 {
-	p->c_r = x / p->zoom_x + p->x1;
-	p->c_i = y / p->zoom_y + p->y1;
-	p->z_r = 0;
-	p->z_i = 0;
-	p->i = 0;
-	while (p->z_r * p->z_r + p->z_i * p->z_i < 4 && p->i < p->iteration_max)
+	double	xx;
+	double	yy;
+	double	i2;
+
+	i2 = 0;
+	while (++(p->i) < p->iteration_maxr)
 	{
-		p->tmp = p->z_r - (p->var / 5000);
-		p->z_r = p->z_r * p->z_r - p->z_i * p->z_i + p->c_r;
-		p->z_i = 2 * p->z_i * p->tmp + p->c_i;
-		p->i = p->i + 1;
+		xx = 2 * x0 / 3 - (x0 * x0 - y0 * y0) / (x0 * x0 + y0 * y0) \
+		/ (x0 * x0 + y0 * y0) / 3;
+		yy = 2 * y0 / 3 + 2 * x0 * y0 / (x0 * x0 + y0 * y0) \
+		/ (x0 * x0 + y0 * y0) / 3;
+		x0 = xx;
+		y0 = yy;
 		if (p->i == p->iteration_max)
 		{
 			p->r = 255;
 			p->v = 255;
 			p->b = 255;
+			draw(p, x, y);
 		}
 		else
 		{
 			p->r = (p->i * p->color1) / (p->iteration_max);
 			p->v = (p->i * p->color2) / (p->iteration_max);
 			p->b = (p->i * p->color3) / (p->iteration_max);
+			draw(p, x, y);
 		}
-		ft_draw(p, x, y);
 	}
+
 }
 
-void		ft_mandelbrot(t_env *p)
+void	newton(t_env *p)
 {
-	int		x;
-	int		y;
+	int x;
+	int y;
 
-	x = 0;
-	while (x < WIDTH)
+	y = 0;
+	while (y < HEIGHT)
 	{
-		y = 0;
-		while (y < HEIGHT)
+		x = 0;
+		while (x < WIDTH)
 		{
-			ft_mandelbrot_(p, x, y);
-			y++;
+			calculate(p, x, y);
+			x++;
 		}
-		x++;
+		y++;
 	}
 }

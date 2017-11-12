@@ -66,15 +66,15 @@ typedef struct		s_env
 	int				endian;
 }					t_env;
 
-void				ft_choose_fract(t_env *p);
-void				ft_print_info(t_env *p);
-static int			ft_loop_key_hook(t_env *p);
-int					ft_key_hook(int keycode, t_env *p);
-int					ft_move_mouse_hook(int x, int y, t_env *p);
-int					ft_mouse_hook(int button, int x, int y, t_env *p);
-void				ft_init_struct(t_env *p);
-void				ft_draw(t_env *p, int x, int y);
-void				ft_julia(t_env *p);
-void				ft_mandelbrot(t_env *p);
+void				chooseFractol(t_env *p);
+void				printInfo(t_env *p);
+static int			loopKeyHook(t_env *p);
+int					keyHook(int keycode, t_env *p);
+int					moveMouseHook(int x, int y, t_env *p);
+int					mouseHook(int button, int x, int y, t_env *p);
+void				initStructure(t_env *p);
+void				draw(t_env *p, int x, int y);
+void				julia(t_env *p);
+void				mandelbrot(t_env *p);
 void				error(char *str);
 #endif

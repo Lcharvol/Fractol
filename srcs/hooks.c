@@ -12,7 +12,7 @@
 
 #include "../includes/fractol.h"
 
-static int	ft_loop_key_hook(t_env *p)
+static int	loopKeyHook(t_env *p)
 {
 	int		x;
 	int		y;
@@ -20,7 +20,7 @@ static int	ft_loop_key_hook(t_env *p)
 
 	y = 0;
 	x = 0;
-	ft_choose_fract(p);
+	chooseFractol(p);
 	mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
 	mlx_destroy_image(p->mlx, p->img);
 	p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
@@ -28,7 +28,7 @@ static int	ft_loop_key_hook(t_env *p)
 	return (0);
 }
 
-int			ft_key_hook2(int keycode, t_env *p)
+int			keyHook__(int keycode, t_env *p)
 {
 	if (keycode == RIGHT)
 	{
@@ -50,11 +50,11 @@ int			ft_key_hook2(int keycode, t_env *p)
 		p->color2 += 50;
 	if (keycode == 20)
 		p->color2 += 50;
-	ft_loop_key_hook(p);
+	loopKeyHook(p);
 	return (0);
 }
 
-int			ft_key_hook(int keycode, t_env *p)
+int			keyHook(int keycode, t_env *p)
 {
 	int		i;
 	int		j;
@@ -68,27 +68,27 @@ int			ft_key_hook(int keycode, t_env *p)
 			p->space = 1;
 	}
 	if (keycode == 117)
-		ft_init_struct(p);
+		initStructure(p);
 	if (keycode == ECHAP)
 		exit(1);
 	if (keycode == UP)
 		p->y1 *= 1.1;
 	if (keycode == DOWN)
 		p->y1 *= 0.9;
-	return (ft_key_hook2(keycode, p));
+	return (keyHook__(keycode, p));
 }
 
-int			ft_move_mouse_hook(int x, int y, t_env *p)
+int			moveMouseHook(int x, int y, t_env *p)
 {
 	if (p->space == 1)
 	{
 		p->var = (x * y) / 100;
-		ft_loop_key_hook(p);
+		loopKeyHook(p);
 	}
 	return (0);
 }
 
-void		zoom_in(int x, int y, t_env *p)
+void		zoomIn(int x, int y, t_env *p)
 {
 	p->zoom *= 1.1;
 
@@ -98,7 +98,7 @@ void		zoom_in(int x, int y, t_env *p)
 	p->y1 += (0.1 - (p->zoom / 100000)) * ((y / (double)(HEIGHT / 2)) - 1);
 }
 
-void		zoom_out(int x, int y, t_env *p)
+void		zoomOut(int x, int y, t_env *p)
 {
 	p->zoom *= 0.9;
 
@@ -106,12 +106,12 @@ void		zoom_out(int x, int y, t_env *p)
 	p->y1 += (0.1) * ((y / (double)(HEIGHT / 2)) - 1);
 }
 
-int			ft_mouse_hook(int button, int x, int y, t_env *p)
+int			mouseHook(int button, int x, int y, t_env *p)
 {
 	if (button == 5 || button == 1)
-		zoom_in(x, y, p);
+		zoomIn(x, y, p);
 	if (button == 4 || button == 2)
-		zoom_out(x, y, p);
-	ft_loop_key_hook(p);
+		zoomOut(x, y, p);
+	loopKeyHook(p);
 	return (0);
 }

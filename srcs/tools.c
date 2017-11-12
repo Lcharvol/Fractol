@@ -18,7 +18,7 @@ void		error(char *str)
 	exit(1);
 }
 
-void		ft_print_info(t_env *p)
+void		printInfo(t_env *p)
 {
 	char	*str;
 
@@ -28,7 +28,7 @@ void		ft_print_info(t_env *p)
 	mlx_string_put(p->mlx, p->win, 130, 10, 0x0FFFFFF, str);
 }
 
-void		ft_draw(t_env *p, int x, int y)
+void		draw(t_env *p, int x, int y)
 {
 	p->ret[(x * 4 + (y * WIDTH * 4))] = p->b;
 	p->ret[(x * 4 + (y * WIDTH * 4)) + 1] = p->v;
@@ -36,7 +36,7 @@ void		ft_draw(t_env *p, int x, int y)
 	p->ret[(x * 4 + (y * WIDTH * 4)) + 3] = 0;
 }
 
-void		ft_init_struct_(t_env *p)
+void		initStructure__(t_env *p)
 {
 	if (ft_strequ(p->name, "mandelbrot"))
 	{
@@ -64,7 +64,7 @@ void		ft_init_struct_(t_env *p)
 	}
 }
 
-void		ft_init_struct(t_env *p)
+void		initStructure(t_env *p)
 {
 	p->color1 = 150;
 	p->color2 = 200;
@@ -77,5 +77,5 @@ void		ft_init_struct(t_env *p)
 	p->iteration_max = 20;
 	p->zoom_x = WIDTH / (p->x2 - p->x1) + p->zoom;
 	p->zoom_y = HEIGHT / (p->y2 - p->y1) + p->zoom;
-	ft_init_struct_(p);
+	initStructure__(p);
 }

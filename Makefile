@@ -13,8 +13,8 @@
 NAME = fractol
 
 SRCS := srcs/main.c 
-SRCS += srcs/ft_julia.c
-SRCS += srcs/ft_mandelbrot.c
+SRCS += srcs/julia.c
+SRCS += srcs/mandelbrot.c
 SRCS += srcs/tools.c
 SRCS += srcs/hooks.c
 
