@@ -24,7 +24,6 @@ static int	loopKeyHook(t_env *p)
 	mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
 	mlx_destroy_image(p->mlx, p->img);
 	p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
-	// ft_print_info(p);
 	return (0);
 }
 
@@ -40,15 +39,15 @@ int			keyHook__(int keycode, t_env *p)
 		p->x1 += 0.1;
 		p->x2 += 0.1;
 	}
-	if (keycode == ZOOM)
+	if (keycode == LESS)
 		p->iteration_max += 10;
-	if (keycode == DEZOOM)
+	if (keycode == PLUS)
 		p->iteration_max -= 10;
-	if (keycode == 18)
+	if (keycode == NUMBER_ONE)
 		p->color1 += 50;
-	if (keycode == 19)
+	if (keycode == NUMBER_TWO)
 		p->color2 += 50;
-	if (keycode == 20)
+	if (keycode == NUMBER_THREE)
 		p->color2 += 50;
 	loopKeyHook(p);
 	return (0);
@@ -56,18 +55,14 @@ int			keyHook__(int keycode, t_env *p)
 
 int			keyHook(int keycode, t_env *p)
 {
-	int		i;
-	int		j;
-
-	i = 1;
-	if (keycode == 49)
+	if (keycode == SPACE_BAR)
 	{
 		if (p->space == 1)
 			p->space = 0;
 		else
 			p->space = 1;
 	}
-	if (keycode == 117)
+	if (keycode == DELETE)
 		initStructure(p);
 	if (keycode == ECHAP)
 		exit(1);
@@ -92,8 +87,6 @@ void		zoomIn(int x, int y, t_env *p)
 {
 	p->zoom *= 1.1;
 
-	ft_putnbr(p->zoom);
-	ft_putchar('\n');
 	p->x1 += (0.1 - (p->zoom / 100000)) * ((x / (double)(WIDTH / 2)) - 1);
 	p->y1 += (0.1 - (p->zoom / 100000)) * ((y / (double)(HEIGHT / 2)) - 1);
 }

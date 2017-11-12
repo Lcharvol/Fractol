@@ -27,12 +27,17 @@
 # define DOWN	125
 # define RIGHT	124
 # define LEFT	123
-# define ZOOM	69
-# define DEZOOM	78
+# define PLUS	69
+# define LESS	78
 # define RIGHT_CLIC 2
 # define LEFT_CLIC 1
 # define SCROLL_IN 5
 # define SCROLL_OUT 4
+# define DELETE 117
+# define SPACE_BAR 49
+# define NUMBER_ONE 18
+# define NUMBER_TWO 19
+# define NUMBER_THREE 20
 
 typedef struct		s_env
 {
