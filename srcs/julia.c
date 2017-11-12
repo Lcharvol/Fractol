@@ -25,20 +25,20 @@ void		julia__(t_env *p, int x, int y)
 		p->z_r = p->z_r * p->z_r - p->z_i * p->z_i + p->c_r - (p->var / 1000);
 		p->z_i = 2 * p->z_i * p->tmp + p->c_i - (p->var / 1000);
 		p->i = p->i + 1;
-		if (p->i == p->iteration_max)
-		{
-			p->r = 255;
-			p->v = 255;
-			p->b = 255;
-		}
-		else
-		{
-			p->r = (p->i * p->color1) / (p->iteration_max);
-			p->v = (p->i * p->color2) / (p->iteration_max);
-			p->b = (p->i * p->color3) / (p->iteration_max);
-		}
-		draw(p, x, y);
 	}
+	if (p->i == p->iteration_max)
+	{
+		p->r = 255;
+		p->v = 255;
+		p->b = 255;
+	}
+	else
+	{
+		p->r = (p->i * p->color1) / (p->iteration_max);
+		p->v = (p->i * p->color2) / (p->iteration_max);
+		p->b = (p->i * p->color3) / (p->iteration_max);
+	}
+	draw(p, x, y);
 }
 
 void		julia(t_env *p)

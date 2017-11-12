@@ -22,8 +22,6 @@ static int	loopKeyHook(t_env *p)
 	x = 0;
 	chooseFractol(p);
 	mlx_put_image_to_window(p->mlx, p->win, p->img, 0, 0);
-	mlx_destroy_image(p->mlx, p->img);
-	p->img = mlx_new_image(p->mlx, WIDTH, HEIGHT);
 	return (0);
 }
 
@@ -101,7 +99,6 @@ void		zoomOut(int x, int y, t_env *p)
 
 int			mouseHook(int button, int x, int y, t_env *p)
 {
-	ft_putnbr(button);
 	if (button == SCROLL_IN || button == LEFT_CLIC)
 		zoomIn(x, y, p);
 	if (button == SCROLL_OUT || button == RIGHT_CLIC)
