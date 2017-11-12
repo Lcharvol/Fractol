@@ -29,6 +29,10 @@
 # define LEFT	123
 # define ZOOM	69
 # define DEZOOM	78
+# define RIGHT_CLIC 2
+# define LEFT_CLIC 1
+# define SCROLL_IN 5
+# define SCROLL_OUT 4
 
 typedef struct		s_env
 {

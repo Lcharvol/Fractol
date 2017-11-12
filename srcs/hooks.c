@@ -108,9 +108,10 @@ void		zoomOut(int x, int y, t_env *p)
 
 int			mouseHook(int button, int x, int y, t_env *p)
 {
-	if (button == 5 || button == 1)
+	ft_putnbr(button);
+	if (button == SCROLL_IN || button == LEFT_CLIC)
 		zoomIn(x, y, p);
-	if (button == 4 || button == 2)
+	if (button == SCROLL_OUT || button == RIGHT_CLIC)
 		zoomOut(x, y, p);
 	loopKeyHook(p);
 	return (0);
