@@ -12,7 +12,7 @@
 
 #include "../includes/fractol.h"
 
-void		julia__(t_env *p, int x, int y)
+void		burning_ship__(t_env *p, int x, int y)
 {
 	p->c_r = 0.285;
 	p->c_i = 0.01;
@@ -41,20 +41,18 @@ void		julia__(t_env *p, int x, int y)
 	draw(p, x, y);
 }
 
-void		julia(t_env *p)
+void		burning_ship(t_env *p)
 {
 	int		x;
 	int		y;
 
 	x = 0;
-	p->zoom_x = HEIGHT / (p->x2 - p->x1);
-	p->zoom_y = WIDTH / (p->y2 - p->y1);
 	while (x < HEIGHT)
 	{
 		y = 0;
 		while (y < WIDTH)
 		{
-			julia__(p, x, y);
+			burning_ship__(p, x, y);
 			y++;
 		}
 		x++;

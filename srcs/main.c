@@ -18,6 +18,8 @@ void		chooseFractol(t_env *p)
 		mandelbrot(p);
 	else if (ft_strequ(p->name, "julia"))
 		julia(p);
+	else if (ft_strequ(p->name, "burningship"))
+		burning_ship(p);
 	else
 		exit(1);
 }
@@ -25,12 +27,13 @@ void		chooseFractol(t_env *p)
 void		displayErrors(int argc, char **argv)
 {
 	if (argc != 2)
-		error("Use fractal julia or mandelbrot");
+		error("Use fractal julia, mandelbrot or burningship");
 	if (!(ft_strequ(argv[1], "julia") ||
 		ft_strequ(argv[1], "mandelbrot") ||
+		ft_strequ(argv[1], "burningship") ||
 		ft_strequ(argv[1], "newton")))
 	{
-		error("Wrong fractal: Use julia or mandelbrot");
+		error("Wrong fractal: Use julia, mandelbrot or burningship");
 	}
 }
 

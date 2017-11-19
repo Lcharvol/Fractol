@@ -15,8 +15,10 @@ NAME = fractol
 SRCS := srcs/main.c 
 SRCS += srcs/julia.c
 SRCS += srcs/mandelbrot.c
+SRCS += srcs/burning_ship.c
 SRCS += srcs/tools.c
 SRCS += srcs/hooks.c
+SRCS += srcs/zoom.c
 
 FLAGS = -Wall -Werror -Wextra -I./includes
 

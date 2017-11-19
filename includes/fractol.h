@@ -85,5 +85,9 @@ void				initStructure(t_env *p);
 void				draw(t_env *p, int x, int y);
 void				julia(t_env *p);
 void				mandelbrot(t_env *p);
+void				burning_ship(t_env *p);
 void				error(char *str);
+void				zoomIn(int x, int y, t_env *p);
+void				zoomOut(int x, int y, t_env *p);
+
 #endif

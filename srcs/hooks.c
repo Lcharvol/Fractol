@@ -38,9 +38,9 @@ int			keyHook__(int keycode, t_env *p)
 		p->x2 += 0.1;
 	}
 	if (keycode == LESS)
-		p->iteration_max += 10;
+		p->iteration_max += 5;
 	if (keycode == PLUS)
-		p->iteration_max -= 10;
+		p->iteration_max -= 5;
 	if (keycode == NUMBER_ONE)
 		p->color1 += 50;
 	if (keycode == NUMBER_TWO)
@@ -64,9 +64,9 @@ int			keyHook(int keycode, t_env *p)
 		initStructure(p);
 	if (keycode == ECHAP)
 		exit(1);
-	if (keycode == UP)
-		p->y1 *= 1.1;
 	if (keycode == DOWN)
+		p->y1 *= 1.1;
+	if (keycode == UP)
 		p->y1 *= 0.9;
 	return (keyHook__(keycode, p));
 }
@@ -79,22 +79,6 @@ int			moveMouseHook(int x, int y, t_env *p)
 		loopKeyHook(p);
 	}
 	return (0);
-}
-
-void		zoomIn(int x, int y, t_env *p)
-{
-	p->zoom *= 1.1;
-
-	p->x1 += (0.1 - (p->zoom / 100000)) * ((x / (double)(WIDTH / 2)) - 1);
-	p->y1 += (0.1 - (p->zoom / 100000)) * ((y / (double)(HEIGHT / 2)) - 1);
-}
-
-void		zoomOut(int x, int y, t_env *p)
-{
-	p->zoom *= 0.9;
-
-	p->x1 += (0.1) * ((x / (double)(WIDTH / 2)) - 1);
-	p->y1 += (0.1) * ((y / (double)(HEIGHT / 2)) - 1);
 }
 
 int			mouseHook(int button, int x, int y, t_env *p)

@@ -19,12 +19,12 @@ void		mandelbrot__(t_env *p, int x, int y)
 	p->z_r = 0;
 	p->z_i = 0;
 	p->i = 0;
-	while (p->z_r * p->z_r + p->z_i * p->z_i < 4 && p->i < p->iteration_max)
+	while ((p->z_r * p->z_r + p->z_i * p->z_i) < 4 && p->i < p->iteration_max)
 	{
-		p->tmp = p->z_r - (p->var / 5000);
+		p->tmp = p->z_r;
 		p->z_r = p->z_r * p->z_r - p->z_i * p->z_i + p->c_r;
 		p->z_i = 2 * p->z_i * p->tmp + p->c_i;
-		p->i = p->i + 1;
+		p->i++;
 	}
 	if (p->i == p->iteration_max)
 	{
@@ -47,10 +47,12 @@ void		mandelbrot(t_env *p)
 	int		y;
 
 	x = 0;
-	while (x < WIDTH)
+	p->zoom_x = HEIGHT / (p->x2 - p->x1);
+	p->zoom_y = WIDTH / (p->y2 - p->y1);
+	while (x < HEIGHT)
 	{
 		y = 0;
-		while (y < HEIGHT)
+		while (y < WIDTH)
 		{
 			mandelbrot__(p, x, y);
 			y++;

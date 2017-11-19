@@ -40,7 +40,7 @@ void		initStructure__(t_env *p)
 {
 	if (ft_strequ(p->name, "mandelbrot"))
 	{
-		p->zoom = 10;
+		p->zoom = 100;
 		p->x1 = -2.1;
 		p->x2 = 0.6;
 		p->y1 = -1.2;
@@ -54,7 +54,7 @@ void		initStructure__(t_env *p)
 		p->y1 = -1.2;
 		p->y2 = 1.2;
 	}
-	else if (ft_strequ(p->name, "newton"))
+	else if (ft_strequ(p->name, "burningship"))
 	{
 		p->zoom = 350;
 		p->x1 = -1;
@@ -74,7 +74,7 @@ void		initStructure(t_env *p)
 	p->r = 0;
 	p->v = 0;
 	p->b = 0;
-	p->iteration_max = 20;
+	p->iteration_max = 50;
 	p->zoom_x = WIDTH / (p->x2 - p->x1) + p->zoom;
 	p->zoom_y = HEIGHT / (p->y2 - p->y1) + p->zoom;
 	initStructure__(p);
